@@ -42,9 +42,29 @@ export class EnrollmentsService {
     });
   }
 
+  async findAll() {
+    return this.prisma.enrollment.findMany({
+      include: {
+        student: { include: { user: { select: { email: true } } } },
+        section: { include: { course: true, professor: true } },
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
   async findActiveEnrollment(studentId: string, sectionId: string) {
     return this.prisma.enrollment.findFirst({
       where: { studentId, sectionId, status: EnrollmentStatus.ACTIVE },
+    });
+  }
+
+  async findAll() {
+    return this.prisma.enrollment.findMany({
+      include: {
+        student: { include: { user: { select: { email: true } } } },
+        section: { include: { course: true, professor: true } },
+      },
+      orderBy: { createdAt: 'desc' },
     });
   }
 }
