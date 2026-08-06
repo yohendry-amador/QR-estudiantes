@@ -34,4 +34,18 @@ export class EnrollmentsController {
   async getSectionEnrollments(@Param('sectionId', ParseUUIDPipe) sectionId: string) {
     return this.enrollmentsService.findBySection(sectionId);
   }
+
+  @Get('section/:sectionId/all')
+  @Roles(Role.ADMIN)
+  @ApiOperation({ summary: 'Obtener todas las inscripciones de una sección (admin)' })
+  async getSectionEnrollmentsAll(@Param('sectionId', ParseUUIDPipe) sectionId: string) {
+    return this.enrollmentsService.findBySection(sectionId);
+  }
+
+  @Get('all')
+  @Roles(Role.ADMIN)
+  @ApiOperation({ summary: 'Obtener todas las inscripciones' })
+  async getAllEnrollments() {
+    return this.enrollmentsService.findAll();
+  }
 }
