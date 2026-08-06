@@ -11,6 +11,7 @@ import { EnrollmentsModule } from './modules/enrollments/enrollments.module';
 import { AttendanceModule } from './modules/attendance/attendance.module';
 import { QrModule } from './modules/qr/qr.module';
 import { AuditModule } from './modules/audit/audit.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
 import { HealthController } from './health.controller';
 
 @Module({
@@ -30,6 +31,7 @@ import { HealthController } from './health.controller';
     AttendanceModule,
     QrModule,
     AuditModule,
+    NotificationsModule,
   ],
   controllers: [HealthController],
 })
