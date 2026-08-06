@@ -51,4 +51,11 @@ export class AttendanceController {
     const updated = await this.attendanceService.updateStatus(id, dto.status, dto.notes);
     return updated as any;
   }
+
+  @Get('section/:sectionId/roster')
+  @ApiOperation({ summary: 'Obtener lista de estudiantes de una sección con su asistencia' })
+  @ApiQuery({ name: 'sessionId', required: false })
+  async getSectionRoster(@Param('sectionId', ParseUUIDPipe) sectionId: string, @Query('sessionId') sessionId?: string) {
+    return this.attendanceService.getRoster(sectionId, sessionId);
+  }
 }

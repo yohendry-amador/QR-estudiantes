@@ -132,4 +132,32 @@ export class AttendanceService {
     });
     return !!attendance;
   }
+
+  async getRoster(sectionId: string, sessionId?: string) {
+    // get all active enrollments for the section
+    const enrollments = await this.prisma.enrollment.findMany({
+      where: { sectionId, status: 'ACTIVE' },
+      include: {
+        student: { include: { user: { select: { email: true } } } },
+      },
+      orderBy: { student: { lastName: 'asc' } },
+    });
+
+    // if sessionId provided, fetch attendance for that session
+    let attendanceMap = new Map<string, any>();
+    if (sessionId) {
+      const attendances = await this.prisma.attendance.findMany({
+        where: { sessionId },
+        include: { student: true },
+      });
+      attendanceMap = new Map(attendances.map(a => [a.studentId, a]));
+    }
+
+    return enrollments.map(e => ({
+      enrollmentId: e.id,
+      studentId: e.studentId,
+      student: e.student,
+      attendance: attendanceMap.get(e.studentId) || null,
+    }));
+  }
 }
