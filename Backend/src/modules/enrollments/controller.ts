@@ -81,9 +81,9 @@ export class EnrollmentsController {
   @ApiOperation({ summary: 'Mover inscripción a otra sección' })
   async moveEnrollment(
     @Param('id', ParseUUIDPipe) id: string,
-    @Body('sectionId') sectionId: string
+    @Body('newSectionId') newSectionId: string
   ) {
-    return this.enrollmentsService.move(id, sectionId);
+    return this.enrollmentsService.move(id, newSectionId);
   }
 
   @Get('student/:studentId/history')
