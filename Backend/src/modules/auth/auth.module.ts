@@ -10,6 +10,7 @@ import { JwtRefreshStrategy } from './strategies/jwt-refresh.strategy';
 
 @Module({
   imports: [
+    AuditModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.registerAsync({
       imports: [ConfigModule],
