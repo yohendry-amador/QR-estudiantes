@@ -12,6 +12,8 @@ import { AttendanceModule } from './modules/attendance/attendance.module';
 import { QrModule } from './modules/qr/qr.module';
 import { AuditModule } from './modules/audit/audit.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { ReportsModule } from './modules/reports/reports.module';
 import { HealthController } from './health.controller';
 
 @Module({
@@ -32,6 +34,8 @@ import { HealthController } from './health.controller';
     QrModule,
     AuditModule,
     NotificationsModule,
+    AdminModule,
+    ReportsModule,
   ],
   controllers: [HealthController],
 })
