@@ -6,20 +6,33 @@ import { RolesGuard } from '../../common/guards/roles.guard';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { Role, EnrollmentStatus } from '@prisma/client';
 import { CreateEnrollmentDto, EnrollmentResponseDto } from './dto';
+import { CurrentUser, CurrentUserPayload } from '../../common/decorators/current-user.decorator';
 
 @ApiTags('enrollments')
 @Controller('enrollments')
-@UseGuards(JwtAuthGuard, RolesGuard)
+@UseGuards(JwtAuthGuard)
 @ApiBearerAuth()
 export class EnrollmentsController {
   constructor(private readonly enrollmentsService: EnrollmentsService) {}
 
   @Post()
+  @UseGuards(RolesGuard)
   @Roles(Role.ADMIN)
-  @ApiOperation({ summary: 'Crear inscripción' })
+  @ApiOperation({ summary: 'Crear inscripción (admin)' })
   @ApiResponse({ status: 201, type: EnrollmentResponseDto })
   async create(@Body() dto: CreateEnrollmentDto): Promise<EnrollmentResponseDto> {
     const enrollment = await this.enrollmentsService.create(dto);
+    return enrollment as any;
+  }
+
+  @Post('me')
+  @ApiOperation({ summary: 'Auto-inscripción del estudiante autenticado' })
+  @ApiResponse({ status: 201, type: EnrollmentResponseDto })
+  async enrollMe(
+    @CurrentUser() user: CurrentUserPayload,
+    @Body() dto: { sectionId: string },
+  ): Promise<EnrollmentResponseDto> {
+    const enrollment = await this.enrollmentsService.enrollStudent(user.userId, dto.sectionId);
     return enrollment as any;
   }
 
@@ -36,6 +49,7 @@ export class EnrollmentsController {
   }
 
   @Get('section/:sectionId/all')
+  @UseGuards(RolesGuard)
   @Roles(Role.ADMIN)
   @ApiOperation({ summary: 'Obtener todas las inscripciones de una sección (admin)' })
   async getSectionEnrollmentsAll(@Param('sectionId', ParseUUIDPipe) sectionId: string) {
@@ -43,6 +57,7 @@ export class EnrollmentsController {
   }
 
   @Get('all')
+  @UseGuards(RolesGuard)
   @Roles(Role.ADMIN)
   @ApiOperation({ summary: 'Obtener todas las inscripciones' })
   async getAllEnrollments() {
@@ -50,6 +65,7 @@ export class EnrollmentsController {
   }
 
   @Patch(':id')
+  @UseGuards(RolesGuard)
   @Roles(Role.ADMIN)
   @ApiOperation({ summary: 'Actualizar inscripción (estado o sección)' })
   async updateEnrollment(
@@ -60,6 +76,7 @@ export class EnrollmentsController {
   }
 
   @Patch(':id/move')
+  @UseGuards(RolesGuard)
   @Roles(Role.ADMIN)
   @ApiOperation({ summary: 'Mover inscripción a otra sección' })
   async moveEnrollment(

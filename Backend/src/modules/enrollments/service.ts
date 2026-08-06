@@ -58,6 +58,20 @@ export class EnrollmentsService {
     });
   }
 
+  async getStudentByUser(userId: string) {
+    const student = await this.prisma.student.findUnique({ where: { userId } });
+    if (!student) throw new NotFoundException('Perfil de estudiante no encontrado');
+    return student;
+  }
+
+  async enrollStudent(userId: string, sectionId: string) {
+    const student = await this.getStudentByUser(userId);
+    // Optionally validate section exists and is active
+    const section = await this.prisma.section.findUnique({ where: { id: sectionId } });
+    if (!section) throw new NotFoundException('Sección no encontrada');
+    return this.create({ studentId: student.id, sectionId });
+  }
+
   async update(id: string, data: { status?: EnrollmentStatus; sectionId?: string }) {
     const enrollment = await this.prisma.enrollment.findUnique({ where: { id } });
     if (!enrollment) throw new NotFoundException('Inscripción no encontrada');
