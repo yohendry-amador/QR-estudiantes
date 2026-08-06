@@ -1,10 +1,10 @@
-import { Controller, Get, Post, Param, Body, UseGuards, ParseUUIDPipe } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Param, Body, UseGuards, ParseUUIDPipe } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { EnrollmentsService } from './service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
 import { Roles } from '../../common/decorators/roles.decorator';
-import { Role } from '@prisma/client';
+import { Role, EnrollmentStatus } from '@prisma/client';
 import { CreateEnrollmentDto, EnrollmentResponseDto } from './dto';
 
 @ApiTags('enrollments')
@@ -47,5 +47,31 @@ export class EnrollmentsController {
   @ApiOperation({ summary: 'Obtener todas las inscripciones' })
   async getAllEnrollments() {
     return this.enrollmentsService.findAll();
+  }
+
+  @Patch(':id')
+  @Roles(Role.ADMIN)
+  @ApiOperation({ summary: 'Actualizar inscripción (estado o sección)' })
+  async updateEnrollment(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() data: { status?: EnrollmentStatus; sectionId?: string }
+  ) {
+    return this.enrollmentsService.update(id, data);
+  }
+
+  @Patch(':id/move')
+  @Roles(Role.ADMIN)
+  @ApiOperation({ summary: 'Mover inscripción a otra sección' })
+  async moveEnrollment(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body('sectionId') sectionId: string
+  ) {
+    return this.enrollmentsService.move(id, sectionId);
+  }
+
+  @Get('student/:studentId/history')
+  @ApiOperation({ summary: 'Historial de inscripciones de un estudiante' })
+  async getStudentEnrollmentHistory(@Param('studentId', ParseUUIDPipe) studentId: string) {
+    return this.enrollmentsService.findHistoryByStudent(studentId);
   }
 }

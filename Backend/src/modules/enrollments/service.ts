@@ -57,4 +57,31 @@ export class EnrollmentsService {
       where: { studentId, sectionId, status: EnrollmentStatus.ACTIVE },
     });
   }
+
+  async update(id: string, data: { status?: EnrollmentStatus; sectionId?: string }) {
+    const enrollment = await this.prisma.enrollment.findUnique({ where: { id } });
+    if (!enrollment) throw new NotFoundException('Inscripción no encontrada');
+    return this.prisma.enrollment.update({ where: { id }, data });
+  }
+
+  async move(id: string, newSectionId: string) {
+    const enrollment = await this.prisma.enrollment.findUnique({ where: { id } });
+    if (!enrollment) throw new NotFoundException('Inscripción no encontrada');
+    // check if already enrolled in new section
+    const existing = await this.prisma.enrollment.findUnique({
+      where: { studentId_sectionId: { studentId: enrollment.studentId, sectionId: newSectionId } },
+    });
+    if (existing && existing.status === EnrollmentStatus.ACTIVE) {
+      throw new ConflictException('El estudiante ya está inscrito en la sección destino');
+    }
+    return this.prisma.enrollment.update({ where: { id }, data: { sectionId: newSectionId } });
+  }
+
+  async findHistoryByStudent(studentId: string) {
+    return this.prisma.enrollment.findMany({
+      where: { studentId },
+      include: { section: { include: { course: true, professor: true } } },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
 }
