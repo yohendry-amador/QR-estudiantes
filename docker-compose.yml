@@ -1,0 +1,110 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: eduportal-postgres
+    environment:
+      POSTGRES_USER: attendance
+      POSTGRES_PASSWORD: TempPassword123
+      POSTGRES_DB: attendance_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U attendance -d attendance_db']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: eduportal-redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  adminer:
+    image: adminer:4.8.1
+    container_name: eduportal-adminer
+    environment:
+      ADMINER_DESIGN: pepa-linha
+    ports:
+      - '8080:8080'
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: eduportal-backend
+    environment:
+      DATABASE_URL: "postgresql://attendance:TempPassword123@postgres:5432/attendance_db?schema=public"
+      REDIS_URL: "redis://redis:6379"
+      JWT_SECRET: "eduportal-jwt-secret-key-2026-secure"
+      JWT_REFRESH_SECRET: "eduportal-refresh-secret-key-2026-secure"
+      JWT_EXPIRES_IN: "15m"
+      JWT_REFRESH_EXPIRES_IN: "7d"
+      QR_SECRET_KEY: "eduportal-qr-secret-key-2026"
+      QR_EXPIRES_SECONDS: "60"
+      PORT: 3000
+      NODE_ENV: production
+      CORS_ORIGIN: "http://localhost:3001"
+    ports:
+      - '3000:3000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD-SHELL', 'wget --no-verbose --tries=1 --spider http://localhost:3000/api/v1/health || exit 1']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    command: >
+      sh -c "
+        echo 'Waiting for PostgreSQL...' &&
+        sleep 5 &&
+        npx prisma migrate deploy 2>/dev/null || echo 'Migration completed or skipped' &&
+        npx prisma db seed 2>/dev/null || echo 'Seed completed or skipped' &&
+        node dist/main.js
+      "
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./qr-attendance
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:3000/api/v1
+    container_name: eduportal-frontend
+    environment:
+      NEXT_PUBLIC_API_URL: "http://localhost:3000/api/v1"
+    ports:
+      - '3001:3001'
+    depends_on:
+      backend:
+
+
+
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD-SHELL', 'wget --no-verbose --tries=1 --spider http://localhost:3001 || exit 1'] 
+      #test: ['CMD-SHELL', 'wget --no-verbose --tries=1 --spider http://127.0.0.1:3001 || exit 1']
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:

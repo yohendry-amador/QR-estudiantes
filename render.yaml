@@ -1,0 +1,53 @@
+databases:
+  - name: qr-postgres
+    plan: free
+    region: oregon
+    databaseName: attendance_db
+    user: attendance
+    postgresMajorVersion: "17"
+
+services:
+  - type: keyvalue
+    name: qr-redis
+    plan: free
+    region: oregon
+    ipAllowList: []
+    maxmemoryPolicy: allkeys-lru
+
+  - type: web
+    name: qr-backend
+    runtime: docker
+    dockerfilePath: ./Backend/Dockerfile
+    dockerContext: ./Backend
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: qr-postgres
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: qr-redis
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: QR_SECRET_KEY
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 15m
+      - key: JWT_REFRESH_EXPIRES_IN
+        value: 7d
+      - key: QR_EXPIRES_SECONDS
+        value: "60"
+      - key: PORT
+        value: "3000"
+      - key: NODE_ENV
+        value: production
+      - key: CORS_ORIGIN
+        sync: false
+    plan: free
+    region: oregon
+    autoDeployTrigger: commit

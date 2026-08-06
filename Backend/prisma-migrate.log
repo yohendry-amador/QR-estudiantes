@@ -1,0 +1,29 @@
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": PostgreSQL database "attendance_db", schema "public" at "localhost:5432"
+
+Applying migration `20260622013127_init`
+
+The following migration(s) have been created and applied from new schema changes:
+
+migrations/
+  ÔööÔöÇ 20260622013127_init/
+    ÔööÔöÇ migration.sql
+
+Your database is now in sync with your schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[GÔ£ö Generated Prisma Client (v5.22.0) to .\node_modules\@prisma\client in 109ms
+
+
+ÔöîÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé  Update available 5.22.0 -> 7.8.0                       Ôöé
+Ôöé                                                         Ôöé
+Ôöé  This is a major update - please follow the guide at    Ôöé
+Ôöé  https://pris.ly/d/major-version-upgrade                Ôöé
+Ôöé                                                         Ôöé
+Ôöé  Run the following to update                            Ôöé
+Ôöé    npm i --save-dev prisma@latest                       Ôöé
+Ôöé    npm i @prisma/client@latest                          Ôöé
+ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ

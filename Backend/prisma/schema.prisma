@@ -1,0 +1,165 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  STUDENT
+  PROFESSOR
+  ADMIN
+}
+
+enum EnrollmentStatus {
+  ACTIVE
+  DROPPED
+  COMPLETED
+}
+
+enum SessionStatus {
+  ACTIVE
+  CLOSED
+  CANCELLED
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  TARDY
+  JUSTIFIED
+}
+
+enum AttendanceMethod {
+  QR_SCAN
+  MANUAL
+}
+
+model User {
+  id           String       @id @default(uuid())
+  email        String       @unique
+  passwordHash String
+  role         Role         @default(STUDENT)
+  isActive     Boolean      @default(true)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  student      Student?
+  professor    Professor?
+  auditLogs    AuditLog[]
+}
+
+model Student {
+  id           String       @id @default(uuid())
+  studentCode  String       @unique
+  firstName    String
+  lastName     String
+  userId       String       @unique
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  enrollments  Enrollment[]
+  attendances  Attendance[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model Professor {
+  id           String       @id @default(uuid())
+  employeeCode String       @unique
+  firstName    String
+  lastName     String
+  userId       String       @unique
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sections     Section[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model Course {
+  id          String     @id @default(uuid())
+  code        String     @unique
+  name        String
+  description String?
+  credits     Int        @default(3)
+  sections    Section[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Section {
+  id          String       @id @default(uuid())
+  code        String
+  courseId    String
+  professorId String
+  schedule    String
+  room        String
+  semester    String
+  year        Int
+  course      Course       @relation(fields: [courseId], references: [id], onDelete: Restrict)
+  professor   Professor    @relation(fields: [professorId], references: [id], onDelete: Restrict)
+  enrollments Enrollment[]
+  sessions    Session[]
+  attendances Attendance[]
+  @@unique([courseId, code, semester, year])
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Enrollment {
+  id        String            @id @default(uuid())
+  studentId String
+  sectionId String
+  status    EnrollmentStatus  @default(ACTIVE)
+  student   Student           @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  section   Section           @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  attendances Attendance[]
+  @@unique([studentId, sectionId])
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+}
+
+model Session {
+  id        String        @id @default(uuid())
+  sectionId String
+  startTime DateTime
+  endTime   DateTime
+  status    SessionStatus @default(ACTIVE)
+  qrCode    String?
+  section   Section       @relation(fields: [sectionId], references: [id], onDelete: Restrict)
+  attendances Attendance[]
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model Attendance {
+  id           String             @id @default(uuid())
+  studentId    String
+  sessionId    String
+  sectionId    String
+  status       AttendanceStatus   @default(PRESENT)
+  recordedAt   DateTime           @default(now())
+  method       AttendanceMethod
+  enrollmentId String
+  notes        String?
+  student      Student            @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  session      Session            @relation(fields: [sessionId], references: [id], onDelete: Restrict)
+  section      Section            @relation(fields: [sectionId], references: [id], onDelete: Restrict)
+  enrollment   Enrollment         @relation(fields: [enrollmentId], references: [id], onDelete: Restrict)
+  @@unique([studentId, sessionId])
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action     String
+  entityType String
+  entityId   String?
+  oldValues  Json?
+  newValues  Json?
+  ipAddress  String?
+  userAgent  String?
+  timestamp  DateTime @default(now())
+}

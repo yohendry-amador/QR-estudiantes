@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "test",
+    "dist",
+    "**/*spec.ts",
+    "src/prisma/**",
+    "src/modules/auth/auth.controller.ts",
+    "src/modules/auth/auth.service.ts",
+    "src/modules/courses/courses.controller.ts",
+    "src/modules/courses/courses.service.ts",
+    "src/modules/professors/professors.controller.ts",
+    "src/modules/professors/professors.service.ts",
+    "src/modules/sections/sections.service.ts",
+    "src/modules/students/students.controller.ts",
+    "src/modules/students/students.service.ts",
+    "src/modules/users/users.controller.ts",
+    "src/modules/users/users.service.ts"
+  ]
+}

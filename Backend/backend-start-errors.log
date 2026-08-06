@@ -1,0 +1,113 @@
+(node:10516) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:06 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +16ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +5ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +5ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mWebsocketModule dependencies initialized[39m[38;5;3m +4ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mRedisModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mProbusModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuditModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mStudentsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mProfessorsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSectionsModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEnrollmentsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mReportsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mQrModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[WebsocketGateway] [39m[32mWebSocket Gateway initialized[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mWebsocketGateway subscribed to the "section:join" message[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mWebsocketGateway subscribed to the "section:leave" message[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mWebsocketGateway subscribed to the "professor:join" message[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mWebsocketGateway subscribed to the "ping" message[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/api/v1/auth}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/login, POST} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/refresh, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/auth/me, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuditController {/api/v1/audit}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/audit, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/audit/entity/:entityType/:entityId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/api/v1/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/users/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/users/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mStudentsController {/api/v1/students}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/students, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/students, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/students/user/:userId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/students/me/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/students/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mProfessorsController {/api/v1/professors}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/professors, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/professors, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/professors/user/:userId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/professors/me/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/professors/:id/sections, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/api/v1/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/courses/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSectionsController {/api/v1/sections}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/sections, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/sections, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/sections/my-sections, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/sections/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/sections/:id/students, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/sections/:id/session/active, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/sections/:id/sessions, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEnrollmentsController {/api/v1/enrollments}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/enrollments, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/enrollments/student/:studentId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/enrollments/section/:sectionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/api/v1/attendance}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attendance, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attendance/section/:sectionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attendance/section/:sectionId/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attendance/student/me, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/attendance/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mQrController {/api/v1/qr}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/qr/generate, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/qr/scan, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/qr/session/:sessionId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mReportsController {/api/v1/reports}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/reports/attendance, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/reports/student/:studentId/summary, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/reports/section/:sectionId/summary, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mNotificationsController {/api/v1/notifications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/unread-count, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/:id/read, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/notifications/read-all, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mProbusController {/api/v1/probus}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/probus/sync/attendance, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/probus/sync/student, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/probus/sync/professor, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 20944  - [39m06/21/2026, 9:29:07 PM [32m    LOG[39m [38;5;3m[PrismaService] [39m[32mConnecting to PostgreSQL...[39m
+C:\Users\yohen\OneDrive\Desktop\QR-estudiantes\Backend\node_modules\@prisma\client\runtime\library.js:112
+You may have to run ${qe("prisma generate")} for your changes to take effect.`,this.config.clientVersion);return t}}parseEngineResponse(t){if(!t)throw new B("Response from the Engine was empty",{clientVersion:this.config.clientVersion});try{return JSON.parse(t)}catch{throw new B("Unable to JSON.parse response from engine",{clientVersion:this.config.clientVersion})}}async loadEngine(){if(!this.engine){this.QueryEngineConstructor||(this.library=await this.libraryLoader.loadLibrary(this.config),this.QueryEngineConstructor=this.library.QueryEngine);try{let t=new WeakRef(this),{adapter:r}=this.config;r&&Ae("Using driver adapter: %O",r),this.engine=new this.QueryEngineConstructor({datamodel:this.datamodel,env:process.env,logQueries:this.config.logQueries??!1,ignoreEnvVarErrors:!0,datasourceOverrides:this.datasourceOverrides??{},logLevel:this.logLevel,configDir:this.config.cwd,engineProtocol:"json"},n=>{t.deref()?.logger(n)},r)}catch(t){let r=t,n=this.parseInitError(r.message);throw typeof n=="string"?r:new R(n.message,this.config.clientVersion,n.error_code)}}}logger(t){let r=this.parseEngineResponse(t);if(r){if("span"in r){this.config.tracingHelper.createEngineSpan(r);return}r.level=r?.level.toLowerCase()??"unknown",fm(r)?this.logEmitter.emit("query",{timestamp:new Date,query:r.query,params:r.params,duration:Number(r.duration_ms),target:r.module_path}):gm(r)?this.loggerRustPanic=new le(lo(this,`${r.message}: ${r.reason} in ${r.file}:${r.line}:${r.column}`),this.config.clientVersion):this.logEmitter.emit(r.level,{timestamp:new Date,message:r.message,target:r.module_path})}}parseInitError(t){try{return JSON.parse(t)}catch{}return t}parseRequestError(t){try{return JSON.parse(t)}catch{}return t}onBeforeExit(){throw new Error('"beforeExit" hook is not applicable to the library engine since Prisma 5.0.0, it is only relevant and implemented for the binary engine. Please add your event listener to the `process` object directly instead.')}async start(){if(await this.libraryInstantiationPromise,await this.libraryStoppingPromise,this.libraryStartingPromise)return Ae(`library already starting, this.libraryStarted: ${this.libraryStarted}`),this.libraryStartingPromise;if(this.libraryStarted)return;let t=async()=>{Ae("library starting");try{let r={traceparent:this.config.tracingHelper.getTraceParent()};await this.engine?.connect(JSON.stringify(r)),this.libraryStarted=!0,Ae("library started")}catch(r){let n=this.parseInitError(r.message);throw typeof n=="string"?r:new R(n.message,this.config.clientVersion,n.error_code)}finally{this.libraryStartingPromise=void 0}};return this.libraryStartingPromise=this.config.tracingHelper.runInChildSpan("connect",t),this.libraryStartingPromise}async stop(){if(await this.libraryStartingPromise,await this.executingQueryPromise,this.libraryStoppingPromise)return Ae("library is already stopping"),this.libraryStoppingPromise;if(!this.libraryStarted)return;let t=async()=>{await new Promise(n=>setTimeout(n,5)),Ae("library stopping");let r={traceparent:this.config.tracingHelper.getTraceParent()};await this.engine?.disconnect(JSON.stringify(r)),this.libraryStarted=!1,this.libraryStoppingPromise=void 0,Ae("library stopped")};return this.libraryStoppingPromise=this.config.tracingHelper.runInChildSpan("disconnect",t),this.libraryStoppingPromise}version(){return this.versionInfo=this.library?.version(),this.versionInfo?.version??"unknown"}debugPanic(t){return this.library?.debugPanic(t)}async request(t,{traceparent:r,interactiveTransaction:n}){Ae(`sending request, this.libraryStarted: ${this.libraryStarted}`);let i=JSON.stringify({traceparent:r}),o=JSON.stringify(t);try{await this.start(),this.executingQueryPromise=this.engine?.query(o,i,n?.id),this.lastQuery=o;let s=this.parseEngineResponse(await this.executingQueryPromise);if(s.errors)throw s.errors.length===1?this.buildQueryError(s.errors[0]):new B(JSON.stringify(s.errors),{clientVersion:this.config.clientVersion});if(this.loggerRustPanic)throw this.loggerRustPanic;return{data:s,elapsed:0}}catch(s){if(s instanceof R)throw s;if(s.code==="GenericFailure"&&s.message?.startsWith("PANIC:"))throw new le(lo(this,s.message),this.config.clientVersion);let a=this.parseRequestError(s.message);throw typeof a=="string"?s:new B(`${a.message}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+PrismaClientInitializationError: Can't reach database server at `localhost:5432`
+
+Please make sure your database server is running at `localhost:5432`.
+    at t (C:\Users\yohen\OneDrive\Desktop\QR-estudiantes\Backend\node_modules\@prisma\client\runtime\library.js:112:2488)
+    at async PrismaModule.onModuleInit (C:\Users\yohen\OneDrive\Desktop\QR-estudiantes\Backend\src\modules\prisma\prisma.module.ts:13:5)
+    at async callModuleInitHook (C:\Users\yohen\OneDrive\Desktop\QR-estudiantes\Backend\node_modules\@nestjs\core\hooks\on-module-init.hook.js:51:9)
+    at async NestApplication.callInitHook (C:\Users\yohen\OneDrive\Desktop\QR-estudiantes\Backend\node_modules\@nestjs\core\nest-application-context.js:234:13)
+    at async NestApplication.init (C:\Users\yohen\OneDrive\Desktop\QR-estudiantes\Backend\node_modules\@nestjs\core\nest-application.js:100:9)
+    at async NestApplication.listen (C:\Users\yohen\OneDrive\Desktop\QR-estudiantes\Backend\node_modules\@nestjs\core\nest-application.js:170:13)
+    at async bootstrap (C:\Users\yohen\OneDrive\Desktop\QR-estudiantes\Backend\src\main.ts:54:3) {
+  clientVersion: '5.22.0',
+  errorCode: 'P1001'
+}
+
+Node.js v24.12.0
