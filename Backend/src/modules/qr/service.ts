@@ -48,6 +48,11 @@ export class QrService {
     const ttl = durationSeconds || this.defaultTtlSeconds;
     const expiresAt = new Date(Date.now() + ttl * 1000);
 
+    const existingActive = await this.sectionsService.getActiveSession(sectionId);
+    if (existingActive) {
+      await this.redisService.deleteQRSession(existingActive.id);
+    }
+
     const session = await this.sectionsService.createSession(sectionId, {
       startTime: new Date(),
       endTime: expiresAt,
