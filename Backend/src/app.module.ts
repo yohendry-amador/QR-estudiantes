@@ -31,5 +31,6 @@ import { HealthController } from './health.controller';
     QrModule,
     AuditModule,
   ],
+  controllers: [HealthController],
 })
 export class AppModule {}
