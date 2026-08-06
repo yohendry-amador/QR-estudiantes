@@ -57,14 +57,4 @@ export class EnrollmentsService {
       where: { studentId, sectionId, status: EnrollmentStatus.ACTIVE },
     });
   }
-
-  async findAll() {
-    return this.prisma.enrollment.findMany({
-      include: {
-        student: { include: { user: { select: { email: true } } } },
-        section: { include: { course: true, professor: true } },
-      },
-      orderBy: { createdAt: 'desc' },
-    });
-  }
 }
