@@ -61,7 +61,14 @@ export class EnrollmentsService {
   async update(id: string, data: { status?: EnrollmentStatus; sectionId?: string }) {
     const enrollment = await this.prisma.enrollment.findUnique({ where: { id } });
     if (!enrollment) throw new NotFoundException('Inscripción no encontrada');
-    return this.prisma.enrollment.update({ where: { id }, data });
+    return this.prisma.enrollment.update({
+      where: { id },
+      data,
+      include: {
+        student: { include: { user: { select: { email: true } } } },
+        section: { include: { course: true, professor: true } },
+      },
+    });
   }
 
   async move(id: string, newSectionId: string) {
@@ -74,7 +81,14 @@ export class EnrollmentsService {
     if (existing && existing.status === EnrollmentStatus.ACTIVE) {
       throw new ConflictException('El estudiante ya está inscrito en la sección destino');
     }
-    return this.prisma.enrollment.update({ where: { id }, data: { sectionId: newSectionId } });
+    return this.prisma.enrollment.update({
+      where: { id },
+      data: { sectionId: newSectionId },
+      include: {
+        student: { include: { user: { select: { email: true } } } },
+        section: { include: { course: true, professor: true } },
+      },
+    });
   }
 
   async findHistoryByStudent(studentId: string) {
