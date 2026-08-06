@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { Role } from '@prisma/client';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AdminService {
@@ -19,19 +20,17 @@ export class AdminService {
     return { totalUsers, totalStudents, totalProfessors, totalCourses, totalSections, totalEnrollments };
   }
 
-  async updateUser(id: string, data: { email?: string; role?: Role; isActive?: boolean }) {
+  async updateUser(id: string, data: { email?: string; role?: Role; isActive?: boolean; password?: string }) {
     const user = await this.prisma.user.findUnique({ where: { id } });
     if (!user) throw new NotFoundException('Usuario no encontrado');
 
     // If role changes, adjust related profiles
     if (data.role && data.role !== user.role) {
-      // Remove old profile
       if (user.role === Role.STUDENT) {
         await this.prisma.student.deleteMany({ where: { userId: id } });
       } else if (user.role === Role.PROFESSOR) {
         await this.prisma.professor.deleteMany({ where: { userId: id } });
       }
-      // Create new profile placeholder (optional)
       if (data.role === Role.STUDENT) {
         await this.prisma.student.create({ data: { userId: id, studentCode: `STU-${id.slice(0,8)}`, firstName: '', lastName: '' } });
       } else if (data.role === Role.PROFESSOR) {
@@ -39,13 +38,19 @@ export class AdminService {
       }
     }
 
+    const updateData: any = {
+      email: data.email,
+      role: data.role,
+      isActive: data.isActive,
+    };
+
+    if (data.password) {
+      updateData.passwordHash = await bcrypt.hash(data.password, 10);
+    }
+
     return this.prisma.user.update({
       where: { id },
-      data: {
-        email: data.email,
-        role: data.role,
-        isActive: data.isActive,
-      },
+      data: updateData,
     });
   }
 
@@ -53,7 +58,6 @@ export class AdminService {
     const user = await this.prisma.user.findUnique({ where: { id } });
     if (!user) throw new NotFoundException('Usuario no encontrado');
 
-    // Cascade deletes handled by Prisma relations (onDelete: Cascade)
     return this.prisma.user.delete({ where: { id } });
   }
 }

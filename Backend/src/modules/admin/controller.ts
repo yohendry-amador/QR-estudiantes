@@ -25,7 +25,7 @@ export class AdminController {
   @ApiOperation({ summary: 'Actualizar usuario (admin)' })
   async updateUser(
     @Param('id', ParseUUIDPipe) id: string,
-    @Body() data: { email?: string; role?: Role; isActive?: boolean },
+    @Body() data: { email?: string; role?: Role; isActive?: boolean; password?: string },
   ) {
     return this.adminService.updateUser(id, data);
   }
