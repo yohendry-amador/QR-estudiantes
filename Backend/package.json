@@ -2,6 +2,9 @@
   "name": "qr-attendance-backend",
   "version": "1.0.0",
   "description": "QR Attendance System Backend",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "build": "nest build",
     "start": "nest start",
